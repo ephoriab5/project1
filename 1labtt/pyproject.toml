@@ -1,0 +1,45 @@
+[project]
+name = "1labtt"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "ephoriab5",email = "nagibruslan@gmail.com"}
+]
+requires-python = ">=3.12"
+dependencies = [
+    "flask (>=3.1.3,<4.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "pytest (>=9.1.1,<10.0.0)",
+    "pytest-cov (>=7.1.0,<8.0.0)",
+    "coverage (>=7.16.2,<8.0.0)",
+    "flask (>=3.1.3,<4.0.0)"
+]
+
+[tool.pytest.ini_options]
+testpaths = [
+    "example/testing"
+]
+python_files = ["test_*.py"]
+markers = [
+    "unit: швидкі юніт-тести",
+    "integration: інтеграційні тести",
+    "slow: повільні тести"
+]
+
+[tool.coverage.run]
+branch = true
+source = ["example/testing"]
+
+[tool.coverage.report]
+omit = [
+    "*/test_*.py",
+    "*/__init__.py"
+]
